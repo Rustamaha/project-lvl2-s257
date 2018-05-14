@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 
 const program = require('commander');
-//const pkg = require("../package.json");
+const packageJSON = require('../../package.json');
+
 program
-  .version('0.0.2')
+  .version(packageJSON.version)
+  .arguments('<firstConfig> <secondConfig>')
   .description('Compares two configuration files and shows a difference.')
   .option('-h, --help', 'output usage information')
   .option('-V, --version', 'output the version number')
@@ -17,4 +19,6 @@ program
     }
     console.log(program.f);
   })
-    .parse(process.argv);
+  .parse(process.argv);
+
+  if (!program.args.length) program.help();
