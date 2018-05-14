@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 const program = require('commander');
-const pkg = require('../package.json');
+//const pkg = require("../package.json");
 program
-  .version(pkg.version)
+  .version('0.0.2')
   .description('Compares two configuration files and shows a difference.')
   .option('-h, --help', 'output usage information')
   .option('-V, --version', 'output the version number')
