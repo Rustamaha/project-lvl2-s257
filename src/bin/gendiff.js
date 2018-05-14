@@ -11,11 +11,11 @@ program
   .option('-V, --version', 'output the version number')
   .option('-f, --format [type]', 'Output format')
   .action((program) => {
-    if (program.help) {
+    if (program.h) {
       console.log(program.help);
     }
     if (program.V) {
-      console.log(program.V);
+      console.log(program.version);
     }
     console.log(program.format);
   })
