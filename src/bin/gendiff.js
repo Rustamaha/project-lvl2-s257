@@ -11,14 +11,12 @@ program
   .option('-V, --version', 'output the version number')
   .option('-f, --format [type]', 'Output format')
   .action((program) => {
-    if (program.h) {
-      console.log(program.h);
+    if (program.help) {
+      console.log(program.help);
     }
     if (program.V) {
       console.log(program.V);
     }
-    console.log(program.f);
+    console.log(program.format);
   })
   .parse(process.argv);
-
-  if (!program.args.length) program.help();
