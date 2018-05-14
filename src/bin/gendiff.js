@@ -11,5 +11,3 @@ program
   .action((firstConfig, secondConfig) =>
     console.log(`firstConfig = ${firstConfig}, secondConfig = ${secondConfig}`))
   .parse(process.argv);
-
-if (program.h || program.help) program.help();
