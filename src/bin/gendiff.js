@@ -8,7 +8,7 @@ program
   .option('-h, --help', 'output usage information')
   .option('-V, --version', 'output the version number')
   .option('-f, --format [type]', 'Output format')
-  .action((prog) => {
+  .action((program) => {
     if (program.h) {
       console.log(program.h);
     }
