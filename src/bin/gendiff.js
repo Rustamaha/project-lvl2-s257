@@ -12,11 +12,11 @@ program
   .option('-f, --format [type]', 'Output format')
   .action((program) => {
     if (program.h) {
-      console.log(program.help);
+      console.log(program.help());
     }
     if (program.V) {
-      console.log(program.version);
+      console.log(program.version());
     }
-    console.log(program.format);
+    console.log(program.format());
   })
   .parse(process.argv);
