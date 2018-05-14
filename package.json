@@ -1,0 +1,37 @@
+{
+  "name": "gendiff-khudaibergenov-r",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "gendiff": "dist/bin/gendiff.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "babel-node": "babel-node",
+    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rustamaha/project-lvl2-s257.git"
+  },
+  "author": "Rustam Khudaibergenov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rustamaha/project-lvl2-s257/issues"
+  },
+  "homepage": "https://github.com/Rustamaha/project-lvl2-s257#readme",
+  "dependencies": {
+    "commander": "^2.15.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-0": "^6.24.1"
+  }
+}
