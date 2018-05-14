@@ -12,4 +12,4 @@ program
     console.log(`firstConfig = ${firstConfig}, secondConfig = ${secondConfig}`))
   .parse(process.argv);
 
-if (!program.args.length) program.help();
+if (program.h || program.help) program.help();
