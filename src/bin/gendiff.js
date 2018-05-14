@@ -8,13 +8,13 @@ program
   .option('-h, --help', 'output usage information')
   .option('-V, --version', 'output the version number')
   .option('-f, --format [type]', 'Output format')
-  .action(if (program.h) {
+  .action((prog) => {
+    if (program.h) {
       console.log(program.h);
     }
     if (program.V) {
       console.log(program.V);
     }
-    if (program.f) {
-      console.log(program.f)
-    })
+    console.log(program.f);
+  })
     .parse(process.argv);
