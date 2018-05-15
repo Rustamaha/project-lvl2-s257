@@ -1,6 +1,6 @@
 {
   "name": "gendiff-khudaibergenov-r",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Compares two configuration files and shows a difference.",
   "main": "index.js",
   "bin": {
