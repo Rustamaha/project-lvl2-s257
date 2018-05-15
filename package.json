@@ -1,7 +1,7 @@
 {
   "name": "gendiff-khudaibergenov-r",
   "version": "0.0.10",
-  "description": "",
+  "description": "Compares two configuration files and shows a difference.",
   "main": "index.js",
   "bin": {
     "gendiff": "dist/bin/gendiff.js"
@@ -10,10 +10,11 @@
     "dist"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "babel-node": "babel-node",
     "build": "set NODE_ENV=production && babel src --out-dir dist --source-maps inline",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "eslint": "eslint src/*/*.js"
   },
   "repository": {
     "type": "git",
@@ -24,14 +25,27 @@
   "bugs": {
     "url": "https://github.com/Rustamaha/project-lvl2-s257/issues"
   },
+  "jest": {
+    "testEnvironment": "node"
+  },
   "homepage": "https://github.com/Rustamaha/project-lvl2-s257#readme",
   "dependencies": {
-    "commander": "^2.15.1"
+    "commander": "^2.15.1",
+    "file-system": "*",
+    "lodash": "*"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-0": "^6.24.1"
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-jest": "*",
+    "jest": "^22.4.3",
+    "jest-cli": "*",
+    "babel-eslint": "*",
+    "eslint": "^4.10.0",
+    "eslint-config-airbnb-base": "*",
+    "eslint-plugin-import": "*",
+    "eslint-plugin-jest": "*"
   }
 }
