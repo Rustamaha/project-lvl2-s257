@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import genDiff from '../src';
 const program = require('commander');
 const packageJSON = require('../../package.json');
 
@@ -8,6 +9,5 @@ program
   .arguments('<firstConfig> <secondConfig>')
   .description('Compares two configuration files and shows a difference.')
   .option('-f, --format [type]', 'Output format')
-  .action((firstConfig, secondConfig) =>
-    console.log(`firstConfig = ${firstConfig}, secondConfig = ${secondConfig}`))
+  .action((firstConfig, secondConfig) => genDiff(firstConfig, secondConfig))
   .parse(process.argv);
