@@ -15,4 +15,7 @@ lint:
 							npm run eslint .
 
 test:
-							npm test
+							npm run test
+
+test-watch:
+							npm run test-watch
