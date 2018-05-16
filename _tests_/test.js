@@ -9,7 +9,7 @@ test('JSON diff of two files', () => {
     '\t - timeout: 50\n',
     '\t - proxy: 123.234.53.22\n',
     '\t + verbose: true\n',
-    '   }'
+    '}'
   ];
   const expected = data.join('');
   expect(actual).toBe(expected);

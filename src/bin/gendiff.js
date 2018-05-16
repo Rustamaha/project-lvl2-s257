@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import genDiff from '..';
+
 const program = require('commander');
 const packageJSON = require('../../package.json');
 
