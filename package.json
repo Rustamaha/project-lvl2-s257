@@ -32,7 +32,9 @@
   "dependencies": {
     "commander": "^2.15.1",
     "file-system": "*",
-    "lodash": "*"
+    "lodash": "*",
+    "path": "*",
+    "js-yaml": "*"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

@@ -1,6 +1,6 @@
 import genDiff from '../src';
 
-test('JSON diff of two files', () => {
+test('JSON diff', () => {
   const actual = genDiff('_tests_/_fixtures_/before.json', '_tests_/_fixtures_/after.json');
   const data = [
     '{\n',
@@ -14,3 +14,8 @@ test('JSON diff of two files', () => {
   const expected = data.join('');
   expect(actual).toBe(expected);
 });
+
+test('YAML diff', () => {
+  const actual = genDiff('_tests_/_fixtures_/before.yml', '_tests_/_fixtures_/after.yml');
+  
+})
