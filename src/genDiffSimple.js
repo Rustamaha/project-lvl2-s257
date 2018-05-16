@@ -8,11 +8,10 @@ export default (path1, path2) => {
   const content2 = fs.readFileSync(path2);
   const ext1 = path.extname(path1);
   const ext2 = path.extname(path2);
-  console.log(ext1);
-  const data1 = parser(ext1)(content1);
-  const data2 = parser(ext2)(content2);
-  const objKeys1 = Object.keys(data1);
-  const objKeys2 = Object.keys(data2);
+  const obj1 = parser(ext1)(content1);
+  const obj2 = parser(ext2)(content2);
+  const objKeys1 = Object.keys(obj1);
+  const objKeys2 = Object.keys(obj2);
   const unitedKeys = union(objKeys1, objKeys2);
   const mapped = unitedKeys.map((key, index) => {
     const predicate = obj1[key] === obj2[key];
