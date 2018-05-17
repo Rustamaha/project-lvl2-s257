@@ -8,5 +8,8 @@ const parsers = {
 
 export default format => (data) => {
   const parser = parsers[format];
+  if (!parser) {
+    throw new Error(`unknown format: ${format}`);
+  }
   return parser(data);
 };
