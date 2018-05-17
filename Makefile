@@ -17,5 +17,5 @@ lint:
 test:
 							npm run test
 
-test-watch:
+testWatch:
 							npm run test-watch
