@@ -35,7 +35,8 @@
     "file-system": "*",
     "lodash": "*",
     "path": "*",
-    "js-yaml": "*"
+    "js-yaml": "*",
+    "ini": "*"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

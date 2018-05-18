@@ -1,9 +1,11 @@
 import { safeLoad } from 'js-yaml';
+import { decode } from 'ini';
 
 const parsers = {
   '.json': JSON.parse,
   '.yaml': safeLoad,
   '.yml': safeLoad,
+  '.ini': decode,
 };
 
 export default format => (data) => {
