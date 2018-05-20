@@ -6,8 +6,11 @@ const pathFile = (format, fileName) => path.join('__tests__', '__fixtures__', `$
 
 const pathResult = pathFile('.txt', 'result');
 const pathResultTree = pathFile('.txt', 'resultTree');
+const plainResult = pathFile('.txt', 'plain');
+
 const expected1 = fs.readFileSync(pathResult, 'utf-8');
 const expected2 = fs.readFileSync(pathResultTree, 'utf-8');
+const expected3 = fs.readFileSync(plainResult, 'utf-8');
 
 const beforeJson = pathFile('.json', 'before');
 const afterJson = pathFile('.json', 'after');
@@ -60,3 +63,10 @@ describe('compare treeFiles', () => {
     expect(actual).toBe(expected2);
   });
 });
+
+describe('compare files to plain-format', () => {
+  test('JSON diff', () => {
+    const actual = genDiff(beforeTreeJson, afterTreeJson, 'plain');
+    expect(actual).toBe(expected3);
+  });
+})

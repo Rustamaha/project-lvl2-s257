@@ -2,7 +2,7 @@ import fs from 'fs';
 import { find, union, isObject } from 'lodash';
 import path from 'path';
 import getParse from './parse';
-import astRenderer from './renderers';
+import getRenderer from './renderers';
 
 const propertyAction = [
   {
@@ -32,7 +32,7 @@ const propertyAction = [
   },
 ];
 
-export default (path1, path2) => {
+export default (path1, path2, format = 'standart') => {
   const content1 = fs.readFileSync(path1, 'utf-8');
   const content2 = fs.readFileSync(path2, 'utf-8');
   const ext1 = path.extname(path1);
@@ -54,5 +54,5 @@ export default (path1, path2) => {
     });
   };
   const ast = parse(obj1, obj2);
-  return astRenderer(ast);
+  return getRenderer(ast, format);
 };

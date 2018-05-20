@@ -30,7 +30,7 @@ const rende = (data, tab) => {
 
 
 const astRenderer = (ast) => {
-  const result = ast.map(data => rende(data, 2, 1)).join('\n');
+  const result = ast.map(data => rende(data, 2)).join('\n');
   return `{\n${result}\n}\n`;
 };
 
