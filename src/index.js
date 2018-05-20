@@ -1,3 +1,3 @@
-import genDiff from './genDiffSimple';
+import genDiff from './astBuilder';
 
 export default genDiff;
