@@ -29,7 +29,7 @@ const renderToPlain = ast => {
     return result;
   };
   const result = iter(ast, []);
-  return `${result}\n`;
+  return `${result}`;
 };
 
 export default renderToPlain;

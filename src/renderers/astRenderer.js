@@ -28,7 +28,7 @@ const rende = (data, tab) => {
   }
 };
 
-const formatLines = data => `{\n${data.join('\n')}\n}\n`;
+const formatLines = data => `{\n${data.join('\n')}}`;
 
 const astRenderer = (ast) => {
   const resultAst = ast.map(data => rende(data, 2));
