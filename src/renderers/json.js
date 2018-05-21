@@ -1,4 +1,4 @@
 export default ast => {
-  const renderToJson = JSON.stringify(ast);
-  return `${renderToJson}\n`;
+  const rendererToJson = JSON.stringify(ast);
+  return `${rendererToJson}\n`;
 };

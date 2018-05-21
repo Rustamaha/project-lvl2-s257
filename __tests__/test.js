@@ -2,78 +2,81 @@ import fs from 'fs';
 import path from 'path';
 import genDiff from '../src';
 
-const pathFile = (format, fileName) => path.join('__tests__', '__fixtures__', `${fileName}${format}`);
+const buildPathForFixture = (format, fileName) => path.join('__tests__', '__fixtures__', `${fileName}${format}`);
 
-const pathResult = pathFile('.txt', 'result');
-const pathResultTree = pathFile('.txt', 'resultTree');
-const plainResult = pathFile('.txt', 'plain');
-const jsonResult = pathFile('.txt', 'json');
+const pathResult = buildPathForFixture('.txt', 'result');
+const pathResultTree = buildPathForFixture('.txt', 'resultTree');
+const plainResult = buildPathForFixture('.txt', 'plain');
+const jsonResult = buildPathForFixture('.txt', 'json');
 
-const expected1 = fs.readFileSync(pathResult, 'utf-8');
-const expected2 = fs.readFileSync(pathResultTree, 'utf-8');
-const expected3 = fs.readFileSync(plainResult, 'utf-8');
-const expected4 = fs.readFileSync(jsonResult, 'utf-8');
+const beforeJson = buildPathForFixture('.json', 'before');
+const afterJson = buildPathForFixture('.json', 'after');
 
-const beforeJson = pathFile('.json', 'before');
-const afterJson = pathFile('.json', 'after');
+const beforeYml = buildPathForFixture('.yml', 'before');
+const afterYml = buildPathForFixture('.yml', 'after');
 
-const beforeYml = pathFile('.yml', 'before');
-const afterYml = pathFile('.yml', 'after');
+const beforeIni = buildPathForFixture('.ini', 'before');
+const afterIni = buildPathForFixture('.ini', 'after');
 
-const beforeIni = pathFile('.ini', 'before');
-const afterIni = pathFile('.ini', 'after');
+const beforeTreeJson = buildPathForFixture('.json', 'beforeTree');
+const afterTreeJson = buildPathForFixture('.json', 'afterTree');
 
-const beforeTreeJson = pathFile('.json', 'beforeTree');
-const afterTreeJson = pathFile('.json', 'afterTree');
+const beforeTreeIni = buildPathForFixture('.ini', 'beforeTree');
+const afterTreeIni = buildPathForFixture('.ini', 'afterTree');
 
-const beforeTreeIni = pathFile('.ini', 'beforeTree');
-const afterTreeIni = pathFile('.ini', 'afterTree');
-
-const beforeTreeYml = pathFile('.yml', 'beforeTree');
-const afterTreeYml = pathFile('.yml', 'afterTree');
+const beforeTreeYml = buildPathForFixture('.yml', 'beforeTree');
+const afterTreeYml = buildPathForFixture('.yml', 'afterTree');
 
 describe('compare files', () => {
   test('JSON diff', () => {
     const actual = genDiff(beforeJson, afterJson);
+    const expected1 = fs.readFileSync(pathResult, 'utf-8');
     expect(actual).toBe(expected1);
   });
 
   test('YML diff', () => {
     const actual = genDiff(beforeYml, afterYml);
+    const expected1 = fs.readFileSync(pathResult, 'utf-8');
     expect(actual).toBe(expected1);
   });
 
   test('INI diff', () => {
     const actual = genDiff(beforeIni, afterIni);
-    expect(actual).toBe(expected1);
+    const expected = fs.readFileSync(pathResult, 'utf-8');
+    expect(actual).toBe(expected);
   });
 });
 
 describe('compare treeFiles', () => {
   test('JSONtree diff', () => {
     const actual = genDiff(beforeTreeJson, afterTreeJson);
-    expect(actual).toBe(expected2);
+    const expected = fs.readFileSync(pathResultTree, 'utf-8');
+    expect(actual).toBe(expected);
   });
 
   test('YMLtree diff', () => {
     const actual = genDiff(beforeTreeYml, afterTreeYml);
-    expect(actual).toBe(expected2);
+    const expected = fs.readFileSync(pathResultTree, 'utf-8');
+    expect(actual).toBe(expected);
   });
 
   test('INItree diff', () => {
     const actual = genDiff(beforeTreeIni, afterTreeIni);
-    expect(actual).toBe(expected2);
+    const expected = fs.readFileSync(pathResultTree, 'utf-8');
+    expect(actual).toBe(expected);
   });
 });
 
 describe('compare files to plain and json formats', () => {
   test('plain format', () => {
     const actual = genDiff(beforeTreeJson, afterTreeJson, 'plain');
-    expect(actual).toBe(expected3);
+    const expected = fs.readFileSync(plainResult, 'utf-8');
+    expect(actual).toBe(expected);
   });
 
   test('json format', () => {
     const actual = genDiff(beforeTreeJson, afterTreeJson, 'json');
-    expect(actual).toBe(expected4);
+    const expected = fs.readFileSync(jsonResult, 'utf-8');
+    expect(actual).toBe(expected);
   })
 })
