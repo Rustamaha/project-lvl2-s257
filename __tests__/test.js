@@ -69,13 +69,13 @@ describe('compare treeFiles', () => {
 
 describe('compare files to plain and json formats', () => {
   test('plain format', () => {
-    const actual = genDiff(beforeTreeJson, afterTreeJson, 'plain');
+    const actual = genDiff(beforeTreeJson, afterTreeJson, '-plain');
     const expected = fs.readFileSync(plainResult, 'utf-8');
     expect(actual).toBe(expected);
   });
 
   test('json format', () => {
-    const actual = genDiff(beforeTreeJson, afterTreeJson, 'json');
+    const actual = genDiff(beforeTreeJson, afterTreeJson, '-json');
     const expected = fs.readFileSync(jsonResult, 'utf-8');
     expect(actual).toBe(expected);
   })

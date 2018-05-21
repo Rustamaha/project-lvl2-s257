@@ -1,13 +1,11 @@
-import { isObject, flatten } from 'lodash';
-
 const setTab = spaces => ' '.repeat(spaces);
 
 const rende = (data, tab) => {
   const tabs = setTab(tab);
   const innerTab = setTab(tab + 2);
 
-  const objStringify = (obj) => {
-    if (isObject(obj)) {
+  const stringify = (obj) => {
+    if (obj instanceof Object) {
       const string = Object.keys(obj).map(key => `${setTab(tabs + 2)}  ${key}: ${obj[key]}`).join('\n');
       return `{\n${innerTab}${string}\n${innerTab}}`;
     }
@@ -16,13 +14,13 @@ const rende = (data, tab) => {
 
   switch (data.type) {
     case 'added':
-      return `${tabs}+ ${data.key}: ${objStringify(data.file2Value)}`;
+      return `${tabs}+ ${data.key}: ${stringify(data.newValue)}`;
     case 'unchanged':
-      return `${tabs}  ${data.key}: ${data.file1Value}`;
+      return `${tabs}  ${data.key}: ${data.oldValue}`;
     case 'removed':
-      return `${tabs}- ${data.key}: ${objStringify(data.file1Value)}`;
+      return `${tabs}- ${data.key}: ${stringify(data.oldValue)}`;
     case 'changed':
-      return [`${tabs}- ${data.key}: ${objStringify(data.file1Value)}`, `${tabs}+ ${data.key}: ${objStringify(data.file2Value)}`].join('\n');
+      return [`${tabs}- ${data.key}: ${stringify(data.oldValue)}`, `${tabs}+ ${data.key}: ${stringify(data.newValue)}`].join('\n');
     case 'inserted':
       return `${tabs}  ${data.key}: {\n${data.children.map(c => rende(c, tab + 4)).join('\n')}\n${innerTab}}`;
     default:
@@ -30,10 +28,11 @@ const rende = (data, tab) => {
   }
 };
 
+const formatLines = data => `{\n${data.join('\n')}\n}\n`;
 
 const astRenderer = (ast) => {
   const resultAst = ast.map(data => rende(data, 2));
-  return `{\n${resultAst.join('\n')}\n}\n`;
+  return formatLines(resultAst);
 };
 
 export default astRenderer;

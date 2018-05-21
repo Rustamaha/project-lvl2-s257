@@ -1,30 +1,30 @@
-import { isObject, flattenDeep } from 'lodash';
+const isUnchanged = data => data.type !== 'unchanged';
 
-const unchanged = data => data.type !== 'unchanged';
-
-const plainBuilder = (data, path, fn) => {
-  const objStringify1 = (obj) => isObject(obj) ? 'complex value' : `value: ${obj}`;
-  const objStringify2 = (obj) => isObject(obj) ? 'complex value' : `${obj}`;
+const buildPlain = (data, path, fn) => {
+  const addedStringify = obj => (obj instanceof Object ? 'complex value' : `value: ${obj}`);
+  const changedStringify = obj => (obj instanceof Object ? 'complex value' : `${obj}`);
   const key = data.key;
-  const newPathKey = path.concat(key).join('.');
+  const keyString = path.concat(key).join('.');
 
   switch (data.type) {
     case 'added':
-      return `Property '${newPathKey}' was added with ${objStringify1(data.file2Value)}`;
+      return `Property '${keyString}' was added with ${addedStringify(data.newValue)}`;
     case 'removed':
-      return `Property '${newPathKey}' was removed`;
+      return `Property '${keyString}' was removed`;
     case 'changed':
-      return `Property '${newPathKey}' was updated. From '${objStringify2(data.file1Value)}' to '${objStringify2(data.file2Value)}'`;
+      return `Property '${keyString}' was updated. From '${changedStringify(data.oldValue)}' to '${changedStringify(data.newValue)}'`;
     case 'inserted':
       return fn(data.children, path.concat(key));
+    default:
+      throw new Error(`unknown type: ${data.type}`);
   }
 };
 
-const rendererToPlain = ast => {
+const renderToPlain = ast => {
   const iter = (tree, pathKey) => {
-    const result = tree
-      .filter(unchanged)
-      .map(data => plainBuilder(data, pathKey, iter))
+    const result = (tree)
+      .filter(isUnchanged)
+      .map(data => buildPlain(data, pathKey, iter))
       .join('\n');
     return result;
   };
@@ -32,4 +32,4 @@ const rendererToPlain = ast => {
   return `${result}\n`;
 };
 
-export default rendererToPlain;
+export default renderToPlain;
