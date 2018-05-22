@@ -18,7 +18,7 @@ const propertyAction = [
   {
     type: 'removed',
     check: (arg1, arg2) => arg1 && !arg2,
-    process: (arg1, arg2) => ({ oldValue: arg1 }),
+    process: arg1 => ({ oldValue: arg1 }),
   },
   {
     type: 'unchanged',
@@ -53,7 +53,7 @@ const getContent = (pathString) => {
   return obj;
 };
 
-export default (path1, path2, format = 'standart') => {
+export default (path1, path2, format = '-standart') => {
   const objBefore = getContent(path1);
   const objAfter = getContent(path2);
   const ast = buildAst(objBefore, objAfter);

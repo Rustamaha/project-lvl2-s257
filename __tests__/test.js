@@ -78,5 +78,5 @@ describe('compare files to plain and json formats', () => {
     const actual = genDiff(beforeTreeJson, afterTreeJson, '-json');
     const expected = fs.readFileSync(jsonResult, 'utf-8');
     expect(actual).toBe(expected);
-  })
-})
+  });
+});

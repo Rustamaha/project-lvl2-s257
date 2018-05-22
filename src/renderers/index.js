@@ -4,7 +4,7 @@ import json from './json';
 
 const renderers = {
   '-plain': plain,
-  'standart': astRenderer,
+  '-standart': astRenderer,
   '-json': json,
 };
 
