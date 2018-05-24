@@ -27,17 +27,20 @@ const afterTreeIni = buildPathForFixture('.ini', 'afterTree');
 const beforeTreeYml = buildPathForFixture('.yml', 'beforeTree');
 const afterTreeYml = buildPathForFixture('.yml', 'afterTree');
 
+const beforePackageJson = buildPathForFixture('.json', 'beforePackage');
+const afterPackageJson = buildPathForFixture('.json', 'afterPackage');
+
 describe('compare files', () => {
   test('JSON diff', () => {
     const actual = genDiff(beforeJson, afterJson);
-    const expected1 = fs.readFileSync(pathResult, 'utf-8');
-    expect(actual).toBe(expected1);
+    const expected = fs.readFileSync(pathResult, 'utf-8');
+    expect(actual).toBe(expected);
   });
 
   test('YML diff', () => {
     const actual = genDiff(beforeYml, afterYml);
-    const expected1 = fs.readFileSync(pathResult, 'utf-8');
-    expect(actual).toBe(expected1);
+    const expected = fs.readFileSync(pathResult, 'utf-8');
+    expect(actual).toBe(expected);
   });
 
   test('INI diff', () => {
@@ -69,13 +72,13 @@ describe('compare treeFiles', () => {
 
 describe('compare files to plain and json formats', () => {
   test('plain format', () => {
-    const actual = genDiff(beforeTreeJson, afterTreeJson, '-plain');
+    const actual = genDiff(beforeTreeJson, afterTreeJson, 'plain');
     const expected = fs.readFileSync(plainResult, 'utf-8');
     expect(actual).toBe(expected);
   });
 
   test('json format', () => {
-    const actual = genDiff(beforeTreeJson, afterTreeJson, '-json');
+    const actual = genDiff(beforeTreeJson, afterTreeJson, 'json');
     const expected = fs.readFileSync(jsonResult, 'utf-8');
     expect(actual).toBe(expected);
   });
