@@ -1,11 +1,11 @@
 import astRenderer from './astRenderer';
-import plain from './plain';
-import json from './json';
+import rendererToPlain from './plain';
+import rendererToJson from './json';
 
 const renderers = {
-  '-plain': plain,
-  '-standart': astRenderer,
-  '-json': json,
+  plain: rendererToPlain,
+  standart: astRenderer,
+  json: rendererToJson,
 };
 
 export default (data, format) => {

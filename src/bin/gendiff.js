@@ -14,5 +14,6 @@ program
   .action((firstConfig, secondConfig, options) => {
     const result = genDiff(firstConfig, secondConfig, options.format);
     console.log(result);
-  })
-  .parse(process.argv);
+  });
+
+program.parse(process.argv);
