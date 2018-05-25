@@ -27,9 +27,6 @@ const afterTreeIni = buildPathForFixture('.ini', 'afterTree');
 const beforeTreeYml = buildPathForFixture('.yml', 'beforeTree');
 const afterTreeYml = buildPathForFixture('.yml', 'afterTree');
 
-const beforePackageJson = buildPathForFixture('.json', 'beforePackage');
-const afterPackageJson = buildPathForFixture('.json', 'afterPackage');
-
 describe('compare files', () => {
   test('JSON diff', () => {
     const actual = genDiff(beforeJson, afterJson);
