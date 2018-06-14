@@ -1,5 +1,3 @@
-import { find } from 'lodash';
-
 const setTab = spaces => ' '.repeat(spaces);
 
 const rende = (data, tab) => {
@@ -32,6 +30,6 @@ const rende = (data, tab) => {
 
 const formatLines = data => `{\n${data.join('\n')}\n}`;
 
-const astRenderer = (ast) => ast.map(data => rende(data, 2));
+const astRenderer = ast => ast.map(data => rende(data, 2));
 
-export default (tree) => formatLines(astRenderer(tree));
+export default tree => formatLines(astRenderer(tree));
