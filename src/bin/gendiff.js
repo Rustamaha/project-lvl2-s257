@@ -8,7 +8,7 @@ import packageJson from '../../package.json';
 
 program
   .version(packageJson.version)
-  .arguments('<firstConfig> <secondConfig>')
+  .arguments('[options] <firstConfig> <secondConfig>')
   .description('Compares two configuration files and shows a difference.')
   .option('-f, --format [type]', 'Output format: plain, json, standart')
   .action((firstConfig, secondConfig) => {
