@@ -4,7 +4,10 @@
 
 <a href="https://codeclimate.com/github/codeclimate/codeclimate/test_coverage"><img src="https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage" /></a>
 
-This cli utility compares two configuration files and shows their difference. It takes three types of formats: ***ini, json, yaml (yml).*** The comparison output can be viewed in three types: ***standard, json, plain.***
+This cli utility compares two configuration files and shows their difference.
+
+It takes three types of formats: ***ini, json, yaml (yml).***
+The comparison output can be viewed in three types: ***standard, json, plain.***
 Make install.
 
     npm install -g gendiff-khudaibergenov-r
