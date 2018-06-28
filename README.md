@@ -7,7 +7,7 @@
 This cli utility compares two configuration files and shows their difference.
 
 It takes three types of formats: ***ini, json, yaml (yml).***
-The comparison output can be viewed in three types: ***standard, json, plain.***
+The comparison output can be viewed in three types: ***default, json, plain.***
 Make install.
 
     npm install -g gendiff-khudaibergenov-r
@@ -18,3 +18,13 @@ Example.
      Property 'timeout' was updated. From '50' to '20'
      Property 'proxy' was removed
      Property 'verbose' was added with value: true
+     
+    gendiff file1.json file2.json
+     {
+        host: hexlet.io
+      - timeout: 50
+      + timeout: 20
+      - proxy: 123.234.53.22
+      + verbose: true
+     }
+  
