@@ -53,7 +53,7 @@ const getContent = (pathString) => {
   return obj;
 };
 
-export default (path1, path2, format = 'standart') => {
+export default (path1, path2, format = 'default') => {
   const objBefore = getContent(path1);
   const objAfter = getContent(path2);
   const ast = buildAst(objBefore, objAfter);

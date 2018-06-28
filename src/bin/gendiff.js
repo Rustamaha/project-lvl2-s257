@@ -10,7 +10,7 @@ program
   .version(packageJson.version)
   .arguments('<firstConfig> <secondConfig>')
   .description('Compares two configuration files and shows a difference.')
-  .option('-f, --format [type]', 'Output format: plain, json, standart')
+  .option('-f, --format [type]', 'Output format: plain, json, default')
   .action((firstConfig, secondConfig) =>
     console.log(genDiff(firstConfig, secondConfig, program.format)));
 

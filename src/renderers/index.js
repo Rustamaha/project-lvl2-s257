@@ -4,7 +4,7 @@ import rendererToJson from './json';
 
 const renderers = {
   plain: rendererToPlain,
-  standart: astRenderer,
+  default: astRenderer,
   json: rendererToJson,
 };
 
