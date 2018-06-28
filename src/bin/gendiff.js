@@ -12,7 +12,7 @@ program
   .description('Compares two configuration files and shows a difference.')
   .option('-f, --format [type]', 'Output format: plain, json, standart')
   .action((firstConfig, secondConfig) => {
-    const result = genDiff(firstConfig, secondConfig, this.format);
+    const result = genDiff(firstConfig, secondConfig, program.format);
     console.log(result);
   });
 
